@@ -1,11 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the frontend dist directory
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 app.post('/suggest-flow', (req, res) => {
   const { prompt } = req.body || {};
@@ -26,6 +30,11 @@ app.post('/suggest-flow', (req, res) => {
   };
 
   return res.json(response);
+});
+
+// Catch-all handler: send back React's index.html file for any non-API routes
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 app.listen(PORT, () => {
