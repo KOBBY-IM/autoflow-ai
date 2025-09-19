@@ -21,3 +21,4 @@ curl -X POST http://localhost:5000/suggest-flow \
 
 echo -e "\n\nServer is running on port 5000 (PID: $SERVER_PID)"
 echo "To stop: kill $SERVER_PID"
+
