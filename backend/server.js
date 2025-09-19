@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const open = require('open');
 
 const app = express();
 const PORT = 5000;
@@ -27,6 +28,11 @@ app.post('/suggest-flow', (req, res) => {
     ],
     explanation:
       'Workflow connects Slack → Sheets, summarizes messages, stores in Notion.',
+    analytics: {
+      successRate: "98%",
+      avgExecutionTime: "1.2s",
+      recommendation: "Replace manual trigger with a webhook to reduce delays."
+    }
   };
 
   return res.json(response);
@@ -39,4 +45,6 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log('Server running on port ' + PORT);
+  // Auto-open the application in the default browser
+  open(`http://localhost:${PORT}`);
 });

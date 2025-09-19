@@ -101,6 +101,28 @@ function App() {
                     </p>
                   </div>
                 )}
+
+                {response.analytics && (
+                  <div className="mt-6 p-6 bg-green-50 border-2 border-green-200 rounded-lg shadow-lg">
+                    <h3 className="text-lg font-semibold text-green-800 mb-4">Workflow Analytics (AI Optimization)</h3>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-green-700 font-medium">Success Rate:</span>
+                        <span className="text-green-800 font-bold">{response.analytics.successRate}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-green-700 font-medium">Avg Execution Time:</span>
+                        <span className="text-green-800 font-bold">{response.analytics.avgExecutionTime}</span>
+                      </div>
+                      <div className="mt-4">
+                        <span className="text-green-700 font-medium block mb-2">Recommendation:</span>
+                        <p className="text-green-800 bg-green-100 p-3 rounded-md">
+                          {response.analytics.recommendation}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </>
             )}
           </div>
